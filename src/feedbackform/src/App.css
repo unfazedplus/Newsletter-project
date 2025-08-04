@@ -1,0 +1,61 @@
+/* CSS variables for consistent theming */
+:root {
+  --primary: #FF6B35;      /* Brand orange */
+  --primary-light: #FF8C42; /* Lighter orange */
+  --secondary: #FFFFFF;    /* White background */
+  --text: #333333;        /* Main text color */
+  --gray: #F5F5F5;        /* Light gray */
+  --font: 'Inter', sans-serif; /* Primary font */
+}
+
+/* Reset default browser styles */
+* {
+  margin: 0;              /* Remove default margin */
+  padding: 0;             /* Remove default padding */
+  box-sizing: border-box; /* Include padding in width calculations */
+  font-family: var(--font); /* Apply brand font */
+}
+
+/* Body styles */
+body {
+  background-color: var(--secondary); /* White background */
+  color: var(--text);     /* Dark text for contrast */
+}
+
+/* Main app container */
+.app {
+  max-width: 1200px;      /* Limit content width */
+  margin: 0 auto;         /* Center horizontally */
+  padding: 20px;          /* Add internal spacing */
+}
+
+/* Header styling */
+header {
+  background-color: var(--primary); /* Orange header */
+  padding: 1rem;          /* Internal spacing */
+  display: flex;          /* Flex layout for logo/title */
+  align-items: center;    /* Vertical alignment */
+  justify-content: center; /* Center horizontally */
+  gap: 1rem;              /* Space between children */
+  margin-bottom: 2rem;    /* Space below header */
+  border-radius: 2px;
+}
+
+/* Heading color overrides */
+h1, h2, h3 {
+  color: var(--secondary);  /* White headings */
+}
+
+/* Only non-header h1, h2, h3 should be primary color */
+main h1, main h2, main h3 {
+  color: var(--primary);  /* Brand orange headings in main content */
+}
+
+/* Login page container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--gray);
+}

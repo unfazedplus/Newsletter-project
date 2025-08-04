@@ -1,0 +1,175 @@
+/* Enhanced dark mode text styles for better readability */
+
+[data-theme="dark"] {
+  /* Brighter text colors */
+  --text-color: #ffffff;
+  --text-secondary: #d0d0d0;
+  --text-muted: #a0a0a0;
+  
+  /* Accent colors */
+  --accent-orange: #ff8c30;
+  --accent-blue: #60a5fa;
+  --accent-green: #34d399;
+}
+
+/* Header text */
+[data-theme="dark"] .header-title,
+[data-theme="dark"] .header-logo {
+  color: #ff8c30;
+}
+
+/* Article text */
+[data-theme="dark"] .article-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .article-lead {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .article-text,
+[data-theme="dark"] .article-list-item span {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .article-subheading {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .list-bullet {
+  color: var(--accent-orange);
+}
+
+/* Comments */
+[data-theme="dark"] .comments-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .comment-author {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+[data-theme="dark"] .comment-text {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .comment-date {
+  color: #a0a0a0;
+}
+
+/* Form elements */
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-textarea,
+[data-theme="dark"] .comment-input {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #444444;
+}
+
+[data-theme="dark"] .form-input::placeholder,
+[data-theme="dark"] .form-textarea::placeholder,
+[data-theme="dark"] .comment-input::placeholder {
+  color: #888888;
+}
+
+/* Buttons */
+[data-theme="dark"] .btn-secondary {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #444444;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background-color: #333333;
+}
+
+[data-theme="dark"] .back-button {
+  color: var(--accent-orange);
+}
+
+/* Action buttons */
+[data-theme="dark"] .action-button,
+[data-theme="dark"] .bookmark-button {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .action-button:hover,
+[data-theme="dark"] .bookmark-button:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .action-button.active,
+[data-theme="dark"] .bookmark-button.active {
+  color: var(--accent-orange);
+}
+
+/* Category badge */
+[data-theme="dark"] .category-badge {
+  background-color: rgba(255, 107, 0, 0.2);
+  color: var(--accent-orange);
+}
+
+/* Author info */
+[data-theme="dark"] .author-name {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .article-meta {
+  color: #a0a0a0;
+}
+
+/* Newsletter cards */
+[data-theme="dark"] .newsletter-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .newsletter-excerpt {
+  color: #d0d0d0;
+}
+
+/* Stats */
+[data-theme="dark"] .stat-value {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .stat-label {
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .stat-change {
+  color: var(--accent-green);
+}
+
+/* Tags */
+[data-theme="dark"] .tag {
+  background-color: #2a2a2a;
+  color: #d0d0d0;
+}
+
+/* Settings */
+[data-theme="dark"] .settings-item-label {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .settings-section-title {
+  color: #ffffff;
+}
+
+/* Profile */
+[data-theme="dark"] .profile-name,
+[data-theme="dark"] .profile-section-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .profile-detail-label {
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .profile-detail-value {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .content-title {
+  color: #ffffff;
+}

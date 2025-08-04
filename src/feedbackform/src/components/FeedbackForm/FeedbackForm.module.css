@@ -1,0 +1,82 @@
+/* Form container */
+.form {
+  background: var(--secondary); /* White background */
+  padding: 2rem;         /* Internal spacing */
+  border-radius: 8px;    /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+  margin-bottom: 2rem;   /* Space below form */
+}
+
+/* Form field group */
+.formGroup {
+  margin-bottom: 1.5rem; /* Space between fields */
+}
+
+/* Label styling */
+.formGroup label {
+  display: block;        /* Make labels block-level */
+  margin-bottom: 0.5rem; /* Space below label */
+  font-weight: 500;      /* Medium font weight */
+}
+
+/* Input field styling */
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  width: 100%;          /* Full width */
+  padding: 0.8rem;      /* Internal spacing */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 4px;   /* Slightly rounded */
+  font-size: 1rem;      /* Base font size */
+}
+
+/* Focus state */
+.formGroup input:focus,
+.formGroup textarea:focus, 
+.formGroup select:focus {
+  outline: 2px solid var(--primary); /* Orange focus ring */
+  border-color: transparent; /* Hide default border */
+}
+
+/* Submit button */
+.submitButton {
+  background-color: var(--primary); /* Orange button */
+  color: white;           /* White text */
+  padding: 0.8rem 1.5rem; /* Button size */
+  border: none;           /* Remove default border */
+  border-radius: 4px;     /* Rounded corners */
+  cursor: pointer;        /* Pointer cursor */
+  font-size: 1rem;        /* Text size */
+  transition: background-color 0.2s; /* Smooth hover */
+}
+
+/* Button hover state */
+.submitButton:hover {
+  background-color: var(--primary-light); /* Lighter orange */
+}
+
+/* Rating container */
+.ratingContainer {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Rating star */
+.ratingStar {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ddd;
+}
+
+/* Active rating star */
+.active {
+  color: var(--primary);
+}
+
+/* Error text */
+.errorText {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

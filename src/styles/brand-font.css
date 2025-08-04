@@ -1,0 +1,26 @@
+/* Recoleta font for brand logo */
+@font-face {
+  font-family: 'Recoleta';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Recoleta'), url('https://fonts.cdnfonts.com/s/31694/Recoleta-RegularDEMO.woff') format('woff');
+}
+
+/* Brand logo font styling */
+.brand-logo {
+  font-family: 'Recoleta';
+  font-weight: 400;
+}
+
+/* Apply to all brand name elements */
+.brand-name,
+.header-logo {
+  font-family: 'Recoleta' !important;
+  font-weight: 400;
+}
+
+/* Dark theme brand name */
+.dark-theme .brand-name {
+  font-family: 'Recoleta' !important;
+  font-weight: 400;
+}

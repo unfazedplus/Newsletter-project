@@ -1,0 +1,1 @@
+// This file is intentionally empty - Tailwind has been removed from the project

@@ -1,0 +1,30 @@
+/* Main container for all stat cards */
+.statsContainer {
+  display: grid; /* Use CSS Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+  gap: 1.5rem; /* Space between cards */
+  margin-bottom: 2rem; /* Space below container */
+}
+
+/* Individual stat card styling */
+.statCard {
+  background: var(--secondary); /* White background */
+  padding: 1.5rem; /* Internal spacing */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+  text-align: center; /* Center-align content */
+}
+
+/* Card title styling */
+.statCard h3 {
+  color: var(--primary); /* Orange text */
+  margin-bottom: 0.5rem; /* Space below title */
+  font-size: 1rem; /* Fixed font size */
+}
+
+/* Stat value styling */
+.statValue {
+  font-size: 2rem; /* Large text for emphasis */
+  font-weight: bold; /* Bold for visibility */
+  color: var(--text); /* Dark text color */
+}

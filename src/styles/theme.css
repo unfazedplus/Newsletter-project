@@ -1,0 +1,164 @@
+/* Theme styles for light and dark mode */
+
+/* Light mode is the default */
+:root {
+  --background-color: #f8f8f8;
+  --text-color: #333;
+  --text-secondary: #666666;
+  --card-background: white;
+  --border-color: #e5e7eb;
+  --primary-color: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --accent-color: #ff6b00;
+  --accent-hover: #e65c00;
+  --secondary-background: #f3f4f6;
+  --secondary-hover: #e5e7eb;
+  --header-background: white;
+  --stat-card-background: white;
+  --newsletter-card-background: white;
+  --sidebar-card-background: white;
+  --action-item-background: #f9fafb;
+  --action-item-hover: #fff0e6;
+  --comment-background: #f9fafb;
+  --toggle-background: #ccc;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles */
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --card-background: #1e1e1e;
+  --border-color: #2e2e2e;
+  --primary-color: #8b5cf6;
+  --primary-hover: #a855f7;
+  --accent-color: #ff6b00;
+  --accent-hover: #ff8c00;
+  --secondary-background: #2a2a2a;
+  --secondary-hover: #333333;
+  --header-background: #1e1e1e;
+  --stat-card-background: #1e1e1e;
+  --newsletter-card-background: #1e1e1e;
+  --sidebar-card-background: #1e1e1e;
+  --action-item-background: #2a2a2a;
+  --action-item-hover: #3a3a3a;
+  --comment-background: #2a2a2a;
+  --toggle-background: #555;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+  background: var(--header-background);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-title {
+  color: var(--text-color);
+}
+
+.stat-card, 
+.newsletter-card, 
+.sidebar-card,
+.profile-card,
+.settings-section,
+.article-card,
+.create-post-form {
+  background: var(--card-background);
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.stat-value,
+.newsletter-title,
+.profile-name,
+.settings-item-label,
+.article-title {
+  color: var(--text-color);
+}
+
+.stat-label,
+.newsletter-excerpt,
+.author-info,
+.settings-item-description,
+.article-text {
+  color: var(--text-secondary);
+}
+
+.btn-secondary {
+  background: var(--secondary-background);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-hover);
+}
+
+.form-input, .form-textarea, .search-input {
+  background-color: var(--card-background);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.form-input:focus, .form-textarea:focus, .search-input:focus {
+  border-color: var(--primary-color);
+}
+
+.action-item {
+  background: var(--action-item-background);
+}
+
+.action-item:hover {
+  background: var(--action-item-hover);
+}
+
+.comment-item {
+  background: var(--comment-background);
+}
+
+.slider {
+  background-color: var(--toggle-background);
+}
+
+/* Theme toggle button - match account settings style */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-background);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.theme-toggle:hover {
+  border-color: #8b5cf6;
+}
+
+.theme-toggle.dark {
+  background-color: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+
+/* Add a theme toggle for the header that matches account settings */
+.header-theme-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.5rem;
+}
