@@ -35,7 +35,7 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
 
   return (
     <div>
-      {/* Header */}
+      {/* Headers */}
       <header className="header">
         <div className="container header-container">
           <div className="header-brand">
