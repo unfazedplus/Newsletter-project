@@ -1,37 +1,91 @@
-/* Account Settings Styles */
+/* Account Settings Styles - Responsive */
 
 .profile-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: clamp(1rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
+  width: 100%;
+}
+
+.account-settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.account-settings-container .profile-card {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.account-settings-container .settings-section {
+  background-color: var(--card-background);
+  border-radius: 2rem;
+  padding: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  width: 80%;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
 }
 
 .settings-section {
   background-color: var(--card-background);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  border-radius: 2rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
   box-shadow: 0 1px 3px var(--shadow-color);
+  width: 100%;
+  overflow: hidden;
 }
 
 .settings-section-title {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 1.125rem;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
   font-weight: 600;
   color: var(--text-color);
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
+  text-align: center;
 }
 
 .settings-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
+  align-items: flex-start;
+  padding: clamp(0.75rem, 2vw, 1rem) 0;
   border-bottom: 1px solid var(--border-color);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .settings-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .settings-item-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .switch {
+    align-self: flex-end;
+  }
 }
 
 .settings-item:last-child {
@@ -253,7 +307,7 @@ input:checked + .slider:before {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   font-size: 0.875rem;
   color: var(--text-color);
   background-color: var(--card-background);
@@ -270,7 +324,7 @@ input:checked + .slider:before {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   font-size: 0.875rem;
   color: var(--text-color);
   background-color: var(--card-background);

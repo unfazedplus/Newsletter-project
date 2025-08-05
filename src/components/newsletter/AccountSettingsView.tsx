@@ -42,30 +42,31 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             <button onClick={() => setCurrentView('profile')} className="header-logo">
               <Logo />
             </button>
-            <span className="header-divider">|</span>
-            <span className="header-title">Account Settings</span>
+            <span className="header-divider desktop-only">|</span>
+            <span className="header-title responsive-text">Account Settings</span>
           </div>
           <div className="header-actions">
             <button onClick={() => setCurrentView('profile')} className="btn-secondary">
               <ArrowLeft size={16} />
-              Back to Profile
+              <span className="desktop-only">Back to Profile</span>
+              <span className="mobile-only">Back</span>
             </button>
           </div>
         </div>
       </header>
 
       <div className="profile-container">
-        <div className="profile-card">
+        <div className="profile-card card-responsive">
           {/* Theme Settings */}
           <div className="settings-section">
-            <h3 className="settings-section-title">
+            <h3 className="settings-section-title text-responsive-lg">
               <Sun size={20} />
               Appearance
             </h3>
             <div className="settings-item">
               <div className="settings-item-info">
-                <span className="settings-item-label">Theme</span>
-                <span className="settings-item-description">
+                <span className="settings-item-label text-responsive-base">Theme</span>
+                <span className="settings-item-description text-responsive-sm">
                   Choose between light and dark mode
                 </span>
               </div>
@@ -78,16 +79,16 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
 
           {/* Notification Settings */}
           <div className="settings-section">
-            <h3 className="settings-section-title">
+            <h3 className="settings-section-title text-responsive-lg">
               <Bell size={20} />
               Notifications
             </h3>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Mail size={16} />
+                <Mail size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label">Email Notifications</span>
-                  <span className="settings-item-description">Receive updates via email</span>
+                  <span className="settings-item-label text-responsive-base">Email Notifications</span>
+                  <span className="settings-item-description text-responsive-sm">Receive updates via email</span>
                 </div>
               </div>
               <label className="switch">
@@ -101,10 +102,10 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </div>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Smartphone size={16} />
+                <Smartphone size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label">Push Notifications</span>
-                  <span className="settings-item-description">Get notified on your device</span>
+                  <span className="settings-item-label text-responsive-base">Push Notifications</span>
+                  <span className="settings-item-description text-responsive-sm">Get notified on your device</span>
                 </div>
               </div>
               <label className="switch">
@@ -118,10 +119,10 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </div>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Bell size={16} />
+                <Bell size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label">Newsletter Updates</span>
-                  <span className="settings-item-description">Weekly newsletter digest</span>
+                  <span className="settings-item-label text-responsive-base">Newsletter Updates</span>
+                  <span className="settings-item-description text-responsive-sm">Weekly newsletter digest</span>
                 </div>
               </div>
               <label className="switch">
@@ -137,16 +138,16 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
 
           {/* Privacy Settings */}
           <div className="settings-section">
-            <h3 className="settings-section-title">
+            <h3 className="settings-section-title text-responsive-lg">
               <Shield size={20} />
               Privacy
             </h3>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Eye size={16} />
+                <Eye size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label">Profile Visibility</span>
-                  <span className="settings-item-description">Make your profile visible to others</span>
+                  <span className="settings-item-label text-responsive-base">Profile Visibility</span>
+                  <span className="settings-item-description text-responsive-sm">Make your profile visible to others</span>
                 </div>
               </div>
               <label className="switch">
@@ -160,10 +161,10 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </div>
             <div className="settings-item">
               <div className="settings-item-info">
-                <EyeOff size={16} />
+                <EyeOff size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label">Show Activity</span>
-                  <span className="settings-item-description">Display your activity to others</span>
+                  <span className="settings-item-label text-responsive-base">Show Activity</span>
+                  <span className="settings-item-description text-responsive-sm">Display your activity to others</span>
                 </div>
               </div>
               <label className="switch">

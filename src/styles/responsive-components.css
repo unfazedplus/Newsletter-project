@@ -1,0 +1,405 @@
+/* Responsive Component Styles */
+
+/* Header Responsive Styles */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-background);
+  border-bottom: 1px solid var(--border-color);
+  padding: clamp(0.5rem, 2vw, 1rem) 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .header-brand {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .header-actions {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* Button Responsive Styles */
+.btn {
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1rem);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+    padding: 0.875rem 1rem;
+  }
+}
+
+/* Card Responsive Styles */
+.card-responsive {
+  background: var(--card-background);
+  border-radius: clamp(0.5rem, 2vw, 0.75rem);
+  padding: clamp(1rem, 4vw, 2rem);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Form Responsive Styles */
+.form-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  width: 100%;
+}
+
+.form-group-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.form-input-responsive {
+  width: 100%;
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1rem);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: var(--text-color);
+  background-color: var(--card-background);
+  transition: all 0.2s;
+  min-height: 44px;
+}
+
+@media (max-width: 480px) {
+  .form-input-responsive {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Grid Responsive Styles */
+.grid-responsive {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  width: 100%;
+}
+
+.grid-1 { grid-template-columns: 1fr; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 480px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Text Responsive Styles */
+.text-responsive-sm {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.text-responsive-base {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+}
+
+.text-responsive-2xl {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+}
+
+.text-responsive-3xl {
+  font-size: clamp(1.5rem, 5vw, 1.875rem);
+}
+
+/* Spacing Responsive Styles */
+.spacing-responsive-sm {
+  padding: clamp(0.5rem, 2vw, 0.75rem);
+  margin: clamp(0.25rem, 1vw, 0.5rem);
+}
+
+.spacing-responsive-md {
+  padding: clamp(0.75rem, 3vw, 1rem);
+  margin: clamp(0.5rem, 2vw, 0.75rem);
+}
+
+.spacing-responsive-lg {
+  padding: clamp(1rem, 4vw, 1.5rem);
+  margin: clamp(0.75rem, 3vw, 1rem);
+}
+
+.spacing-responsive-xl {
+  padding: clamp(1.5rem, 5vw, 2rem);
+  margin: clamp(1rem, 4vw, 1.5rem);
+}
+
+/* Image Responsive Styles */
+.image-responsive {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.image-container-responsive {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+/* Avatar Responsive Styles */
+.avatar-responsive {
+  width: clamp(2rem, 8vw, 5rem);
+  height: clamp(2rem, 8vw, 5rem);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-background);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: clamp(0.75rem, 3vw, 1.25rem);
+  overflow: hidden;
+}
+
+/* Navigation Responsive Styles */
+.nav-responsive {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .nav-responsive {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .nav-responsive > * {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Search Responsive Styles */
+.search-responsive {
+  position: relative;
+  width: 100%;
+  max-width: clamp(200px, 40vw, 300px);
+}
+
+.search-input-responsive {
+  width: 100%;
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(2rem, 6vw, 2.5rem) clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1rem);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  background-color: var(--card-background);
+  color: var(--text-color);
+  min-height: 44px;
+}
+
+@media (max-width: 480px) {
+  .search-responsive {
+    max-width: 100%;
+  }
+  
+  .search-input-responsive {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Modal Responsive Styles */
+.modal-responsive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.modal-content-responsive {
+  background: var(--card-background);
+  border-radius: clamp(0.5rem, 2vw, 1rem);
+  padding: clamp(1rem, 4vw, 2rem);
+  width: 100%;
+  max-width: clamp(300px, 90vw, 600px);
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Table Responsive Styles */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+@media (max-width: 768px) {
+  .table-responsive table {
+    min-width: 100%;
+  }
+  
+  .table-responsive th,
+  .table-responsive td {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Sidebar Responsive Styles */
+.sidebar-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-responsive {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Content Layout Responsive */
+.content-layout-responsive {
+  display: grid;
+  gap: clamp(1rem, 4vw, 2rem);
+  width: 100%;
+}
+
+@media (min-width: 1025px) {
+  .content-layout-responsive {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content-layout-responsive {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .card-responsive,
+  .btn,
+  .form-input-responsive {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .btn,
+  .form-input-responsive,
+  .card-responsive {
+    border-width: 2px;
+  }
+}
+
+/* Focus styles for better accessibility */
+.btn:focus,
+.form-input-responsive:focus,
+.search-input-responsive:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.loading-responsive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 8vw, 4rem);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: var(--text-secondary);
+}
+
+/* Error states */
+.error-responsive {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: clamp(0.75rem, 3vw, 1rem);
+  border-radius: 0.5rem;
+  border: 1px solid #fecaca;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+/* Success states */
+.success-responsive {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: clamp(0.75rem, 3vw, 1rem);
+  border-radius: 0.5rem;
+  border: 1px solid #bbf7d0;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}

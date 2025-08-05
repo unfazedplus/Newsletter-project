@@ -42,7 +42,7 @@
 
 .task-form-container {
   background: var(--card-background);
-  border-radius: 0.75rem;
+  border-radius: 2rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 1px 3px var(--shadow-color);
@@ -80,7 +80,7 @@
 
 .task-list-container {
   background: var(--card-background);
-  border-radius: 0.75rem;
+  border-radius: 2rem;
   padding: 1.5rem;
   box-shadow: 0 1px 3px var(--shadow-color);
 }
@@ -108,7 +108,7 @@
   align-items: center;
   padding: 1rem;
   background: var(--secondary-background);
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   border-left: 3px solid var(--primary-color);
 }
 
