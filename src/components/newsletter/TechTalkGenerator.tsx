@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { X, RefreshCw, Calendar, Users, Clock } from 'lucide-react';
 
 interface TechTalk {
@@ -50,7 +50,7 @@ export function TechTalkGenerator({ isOpen, onClose }: { isOpen: boolean; onClos
       };
 
       setTechTalk(newTechTalk);
-    } catch (error) {
+    } catch {
       // Fallback with Lorem Picsum image
       const fallbackCategories = ['AI/ML', 'Web Development', 'Cloud Computing'];
       const fallbackCategory = fallbackCategories[Math.floor(Math.random() * fallbackCategories.length)];

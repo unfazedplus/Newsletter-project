@@ -6,8 +6,6 @@ import type { AccountSettings } from '../../types/newsletter';
 
 interface HeaderProps {
   setCurrentView: (view: 'login' | 'home' | 'article' | 'create' | 'profile') => void;
-  showProfile: boolean;
-  setShowProfile: (show: boolean) => void;
   accountSettings?: AccountSettings;
   setAccountSettings?: (settings: AccountSettings) => void;
   searchQuery: string;

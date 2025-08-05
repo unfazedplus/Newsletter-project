@@ -82,7 +82,7 @@ Submitted on: ${new Date().toLocaleString()}`;
           }
         })
       });
-    } catch (error) {
+    } catch {
       // Fallback: Use Web3Forms (no signup required)
       try {
         await fetch('https://api.web3forms.com/submit', {
@@ -112,7 +112,7 @@ Suggested Improvements: ${surveyData.improvements || 'No suggestions provided'}
 Submitted on: ${new Date().toLocaleString()}`
           })
         });
-      } catch (fallbackError) {
+      } catch {
         console.log('Email sending failed');
       }
     }

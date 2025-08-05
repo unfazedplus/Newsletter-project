@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { User, Mail, MapPin, Calendar, Camera, Save, X, Search } from 'lucide-react';
 import type { UserProfile, AccountSettings } from '../../types/newsletter';
 import { ThemeToggle } from '../ThemeToggle';
@@ -33,12 +33,11 @@ export function EditProfileView({ setCurrentView, userProfile, setUserProfile, a
       );
       const data = await response.json();
       
-      const suggestions = data.results?.map((item: any) => 
+      const suggestions = data.results?.map((item: { name: string; admin1?: string; country?: string }) => 
         `${item.name}, ${item.admin1 || ''} ${item.country || ''}`.trim().replace(/,\s*,/g, ',')
       ) || [];
       setLocationSuggestions(suggestions);
-    } catch (error) {
-      console.error('Error searching locations:', error);
+    } catch {
       setLocationSuggestions([]);
     } finally {
       setIsSearchingLocation(false);
@@ -50,8 +49,7 @@ export function EditProfileView({ setCurrentView, userProfile, setUserProfile, a
     try {
       setUserProfile({...editedProfile});
       setCurrentView('profile');
-    } catch (error) {
-      console.error('Error saving profile:', error);
+    } catch {
       setFileError('Failed to save profile. Image may be too large.');
     }
   };
@@ -104,7 +102,7 @@ export function EditProfileView({ setCurrentView, userProfile, setUserProfile, a
           ...editedProfile,
           profilePicture: compressedImage
         });
-      } catch (error) {
+      } catch {
         setFileError('Failed to process image');
       }
     }

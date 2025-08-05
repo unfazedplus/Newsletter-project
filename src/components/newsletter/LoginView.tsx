@@ -1,5 +1,4 @@
-// Import React library and useState hook for managing component state
-import React, { useState } from "react";
+import { useState } from "react";
 import { Logo } from '../Logo';
 import { ArrowLeft } from 'lucide-react';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Feedback } from '../../types';
 import styles from './FeedbackForm.module.css';
 
@@ -7,7 +7,7 @@ interface FeedbackFormProps {
   onSubmit: (feedback: Omit<Feedback, 'id' | 'timestamp'>) => void;
 }
 
-const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit }) => {
+const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
   // Form state management
   const [formData, setFormData] = useState({
     name: '',              // Initialize empty name
@@ -18,7 +18,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit }) => {
   });
   
   // Track if rating has been selected
-  const [ratingSelected, setRatingSelected] = useState(false);
+  const [, setRatingSelected] = useState(false);
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {

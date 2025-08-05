@@ -16,8 +16,6 @@ interface HomeViewProps {
   viewArticle: (articleId: number) => void;
   setCurrentView: (view: ViewType) => void;
   stats: StatItem[];
-  showProfile: boolean;
-  setShowProfile: (show: boolean) => void;
   accountSettings: AccountSettings;
   setAccountSettings: (settings: AccountSettings) => void;
   searchQuery: string;
@@ -36,8 +34,6 @@ export function HomeView({
   viewArticle,
   setCurrentView,
   stats,
-  showProfile,
-  setShowProfile,
   accountSettings,
   setAccountSettings,
   searchQuery,
@@ -53,13 +49,10 @@ const handleViewChange = (view: string) => {
     <div>
       <Header
         setCurrentView={handleViewChange}
-        showProfile={showProfile}
-        setShowProfile={setShowProfile}
         accountSettings={accountSettings}
         setAccountSettings={setAccountSettings}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-
       />
       
       <TipCharacter />

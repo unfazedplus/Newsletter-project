@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type  { Stats } from '../../types'; // Import Stats interface
 import styles from './StatsCard.module.css'; // Import CSS module
 
@@ -7,7 +7,7 @@ interface StatsCardProps {
   stats: Stats; // Accepts stats data as props
 }
 
-const StatsCard: React.FC<StatsCardProps> = ({ stats }) => {
+const StatsCard = ({ stats }: StatsCardProps) => {
   return (
     // Main container for all stat cards
     <div className={styles.statsContainer}>

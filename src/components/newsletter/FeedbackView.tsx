@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Header } from './Header';
 import type { AccountSettings } from '../../types/newsletter';
 
@@ -55,8 +55,6 @@ export function FeedbackView({
     <div>
       <Header 
         setCurrentView={setCurrentView}
-        showProfile={false}
-        setShowProfile={() => {}}
         accountSettings={accountSettings}
         setAccountSettings={setAccountSettings}
         searchQuery=""

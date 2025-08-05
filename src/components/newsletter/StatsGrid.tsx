@@ -8,7 +8,7 @@ export function StatsGrid({ stats }: StatsGridProps) {
   return (
     <div className="stats-grid">
       {stats.map((stat, index) => (
-        <div key={index} className="stat-card">
+        <div key={`${stat.label}-${index}`} className="stat-card">
           <div className="stat-header">
             <div className="stat-icon-container">
               <stat.icon className="stat-icon" />

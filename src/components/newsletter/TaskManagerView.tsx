@@ -54,9 +54,6 @@ export function TaskManagerView({
     
     // Create a new array with the new task to ensure state update
     const updatedTasks = [...tasks, newTask];
-    console.log('Adding task:', newTask);
-    console.log('Updated tasks:', updatedTasks);
-    
     setTasks(updatedTasks);
     setNewTaskTitle("");
     setNewTaskDescription("");
@@ -96,8 +93,6 @@ export function TaskManagerView({
     <div>
       <Header 
         setCurrentView={setCurrentView}
-        showProfile={false}
-        setShowProfile={() => {}}
         accountSettings={accountSettings}
         setAccountSettings={setAccountSettings}
         searchQuery=""

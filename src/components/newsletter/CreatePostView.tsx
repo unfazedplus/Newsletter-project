@@ -1,4 +1,4 @@
-import React from "react";
+
 import { User } from "lucide-react";
 import type { NewPostData, AccountSettings } from "../../types/newsletter";
 import { ThemeToggle } from "../ThemeToggle";

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type { Feedback } from '../../types'; // Import Feedback interface
 import styles from './FeedbackList.module.css'; // Import CSS module
 
@@ -8,7 +8,7 @@ interface FeedbackListProps {
   onDelete?: (id: number) => void; // Optional callback for deleting feedback
 }
 
-const FeedbackList: React.FC<FeedbackListProps> = ({ feedbacks, onDelete }) => {
+const FeedbackList = ({ feedbacks, onDelete }: FeedbackListProps) => {
   return (
     // Main container for feedback list
     <div className={styles.feedbackList}>

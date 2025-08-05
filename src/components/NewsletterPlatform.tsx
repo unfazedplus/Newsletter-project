@@ -78,7 +78,7 @@ export default function NewsletterPlatform() {
     localStorage.getItem('currentView') as ViewType || 'landing'
   );
   
-  const [showProfile, setShowProfile] = useState(false);
+
   
   const [likedPosts, setLikedPosts] = useState<Set<number>>(
     new Set(JSON.parse(localStorage.getItem('likedPosts') || '[]'))
@@ -449,8 +449,6 @@ export default function NewsletterPlatform() {
   return (
     <HomeView
       {...commonProps}
-      showProfile={showProfile}
-      setShowProfile={setShowProfile}
       searchQuery={searchQuery}
       setSearchQuery={setSearchQuery}
     />
