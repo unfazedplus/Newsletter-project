@@ -1,9 +1,9 @@
-/* Responsive Layout System - Mobile First */
+/* Fixed Layout System - Desktop-like on all devices */
 
-/* Base containers - Mobile First */
+/* Base containers - Fixed sizing */
 .container-fluid {
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 16px;
   max-width: 100vw;
 }
 
@@ -11,56 +11,42 @@
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
 }
 
 .container-md {
   width: 100%;
   max-width: 768px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
 }
 
 .container-lg {
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
 }
 
 .container-xl {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
 }
 
-/* Responsive Grid System */
+/* Fixed Grid System - Same layout on all devices */
 .grid {
   display: grid;
-  gap: 1rem;
+  gap: 24px;
   width: 100%;
 }
 
-/* Mobile First Grid */
+/* Fixed Grid Columns */
 .grid-cols-1 { grid-template-columns: 1fr; }
-.grid-cols-2 { grid-template-columns: 1fr; }
-.grid-cols-3 { grid-template-columns: 1fr; }
-.grid-cols-4 { grid-template-columns: 1fr; }
-
-/* Tablet Grid */
-@media (min-width: 640px) {
-  .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-  .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
-  .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* Desktop Grid */
-@media (min-width: 1024px) {
-  .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-  .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
-  .grid { gap: 1.5rem; }
-}
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
 
 /* Responsive Flexbox utilities */
 .flex {
@@ -151,30 +137,15 @@
   .p-8 { padding: 2.5rem; }
 }
 
-/* Responsive text sizes */
-.text-xs { font-size: 0.75rem; }
-.text-sm { font-size: 0.875rem; }
-.text-base { font-size: 1rem; }
-.text-lg { font-size: 1.125rem; }
-.text-xl { font-size: 1.25rem; }
-.text-2xl { font-size: 1.5rem; }
-.text-3xl { font-size: 1.875rem; }
-.text-4xl { font-size: 2.25rem; }
-
-/* Mobile text adjustments */
-@media (max-width: 639px) {
-  .text-lg { font-size: 1rem; }
-  .text-xl { font-size: 1.125rem; }
-  .text-2xl { font-size: 1.25rem; }
-  .text-3xl { font-size: 1.5rem; }
-  .text-4xl { font-size: 1.875rem; }
-}
-
-/* Desktop text enhancements */
-@media (min-width: 1024px) {
-  .text-3xl { font-size: 2rem; }
-  .text-4xl { font-size: 2.5rem; }
-}
+/* Fixed text sizes - Same on all devices */
+.text-xs { font-size: 12px; }
+.text-sm { font-size: 14px; }
+.text-base { font-size: 16px; }
+.text-lg { font-size: 18px; }
+.text-xl { font-size: 20px; }
+.text-2xl { font-size: 24px; }
+.text-3xl { font-size: 30px; }
+.text-4xl { font-size: 36px; }
 
 .text-center { text-align: center; }
 .text-left { text-align: left; }
@@ -236,14 +207,7 @@
 .h-auto { height: auto; }
 .min-h-screen { min-height: 100vh; }
 
-/* Mobile width adjustments */
-@media (max-width: 639px) {
-  .w-1\/2 { width: 100%; }
-  .w-1\/3 { width: 100%; }
-  .w-2\/3 { width: 100%; }
-  .w-1\/4 { width: 50%; }
-  .w-3\/4 { width: 100%; }
-}
+/* Fixed width - Same on all devices */
 
 /* Positioning */
 .relative { position: relative; }

@@ -19,11 +19,9 @@
   margin: 0 1rem;
 }
 
-@media (min-width: 640px) {
-  .login-card {
-    padding: 2.5rem;
-    margin: 0;
-  }
+.login-card {
+  padding: 40px;
+  margin: 0;
 }
 
 .login-header {
@@ -150,16 +148,8 @@
   padding: 0 1rem;
 }
 
-@media (min-width: 640px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding: 0 2rem;
-  }
+.container {
+  padding: 0 32px;
 }
 
 .header-container {
@@ -171,12 +161,7 @@
   gap: 1rem;
 }
 
-@media (max-width: 639px) {
-  .header-container {
-    flex-direction: column;
-    text-align: center;
-  }
-}
+
 
 .header-brand {
   display: flex;
@@ -212,23 +197,9 @@
   flex-wrap: wrap;
 }
 
-@media (min-width: 640px) {
-  .header-actions {
-    gap: 1rem;
-    flex-wrap: nowrap;
-  }
-}
-
-@media (max-width: 639px) {
-  .header-actions {
-    justify-content: center;
-  }
-  
-  .search-container {
-    order: 1;
-    width: 100%;
-    margin-top: 0.75rem;
-  }
+.header-actions {
+  gap: 16px;
+  flex-wrap: nowrap;
 }
 
 .search-container {
@@ -260,11 +231,9 @@
   min-height: 44px;
 }
 
-@media (max-width: 639px) {
-  .search-input {
-    font-size: 16px; /* Prevents zoom on iOS */
-    max-width: 100%;
-  }
+.search-input {
+  font-size: 14px;
+  max-width: 250px;
 }
 
 .btn-create {
@@ -286,12 +255,10 @@
   background: #e65c00;
 }
 
-@media (max-width: 639px) {
-  .btn-create {
-    padding: 0.75rem;
-    min-width: 44px;
-    justify-content: center;
-  }
+.btn-create {
+  padding: 8px 16px;
+  min-width: auto;
+  justify-content: center;
 }
 
 .icon-button {
@@ -331,11 +298,9 @@
   transform: scale(1.05);
 }
 
-@media (max-width: 639px) {
-  .avatar {
-    width: 2.75rem;
-    height: 2.75rem;
-  }
+.avatar {
+  width: 40px;
+  height: 40px;
 }
 
 .avatar-icon {
@@ -351,37 +316,15 @@
   padding: 1rem;
 }
 
-@media (min-width: 640px) {
-  .main-container {
-    padding: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .main-container {
-    padding: 2rem;
-  }
+.main-container {
+  padding: 32px;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 640px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
 }
 
 .stat-card {
@@ -398,17 +341,9 @@
   text-align: center;
 }
 
-@media (min-width: 640px) {
-  .stat-card {
-    padding: 1.5rem;
-    text-align: left;
-  }
-}
-
-@media (min-width: 1024px) {
-  .stat-card {
-    padding: 2rem;
-  }
+.stat-card {
+  padding: 32px;
+  text-align: left;
 }
 
 .stat-card::before {
@@ -488,17 +423,9 @@
   gap: 1.5rem;
 }
 
-@media (min-width: 1024px) {
-  .content-layout {
-    grid-template-columns: 1fr 300px;
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 1023px) {
-  .sidebar {
-    order: -1;
-  }
+.content-layout {
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
 }
 
 .main-content {
@@ -544,16 +471,8 @@
   transition: box-shadow 0.2s;
 }
 
-@media (min-width: 640px) {
-  .newsletter-card {
-    padding: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .newsletter-card {
-    padding: 1.5rem;
-  }
+.newsletter-card {
+  padding: 24px;
 }
 
 .newsletter-card:hover {
@@ -574,11 +493,9 @@
   flex-wrap: wrap;
 }
 
-@media (min-width: 640px) {
-  .newsletter-meta {
-    gap: 0.75rem;
-    flex-wrap: nowrap;
-  }
+.newsletter-meta {
+  gap: 12px;
+  flex-wrap: nowrap;
 }
 
 .category-badge {
@@ -623,10 +540,8 @@
   line-height: 1.4;
 }
 
-@media (min-width: 640px) {
-  .newsletter-title {
-    font-size: 1.25rem;
-  }
+.newsletter-title {
+  font-size: 20px;
 }
 
 .newsletter-title:hover {
@@ -668,16 +583,8 @@
   transition: transform 0.2s;
 }
 
-@media (min-width: 640px) {
-  .single-image {
-    max-height: 300px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .single-image {
-    max-height: 350px;
-  }
+.single-image {
+  max-height: 350px;
 }
 
 .single-image:hover {
@@ -713,16 +620,8 @@
   transition: transform 0.2s;
 }
 
-@media (min-width: 640px) {
-  .grid-image {
-    height: 150px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-image {
-    height: 180px;
-  }
+.grid-image {
+  height: 180px;
 }
 
 .grid-image:hover {
@@ -761,17 +660,7 @@
   gap: 0.75rem;
 }
 
-@media (max-width: 639px) {
-  .newsletter-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .footer-actions {
-    width: 100%;
-    justify-content: space-around;
-  }
-}
+
 
 .footer-actions {
   display: flex;
