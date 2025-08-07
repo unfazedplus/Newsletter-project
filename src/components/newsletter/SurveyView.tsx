@@ -3,8 +3,7 @@ import { ArrowLeft, Send, Star } from 'lucide-react';
 import type { AccountSettings, ViewType } from '../../types/newsletter';
 import { ThemeToggle } from '../ThemeToggle';
 import { Logo } from '../Logo';
-import { setCSRFToken, validateCSRFToken } from '../../utils/csrf';
-import { sanitizeHtml } from '../../utils/sanitize';
+
 
 interface SurveyViewProps {
   setCurrentView: (view: ViewType) => void;
@@ -38,11 +37,6 @@ export function SurveyView({ setCurrentView, accountSettings, setAccountSettings
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [csrfToken, setCsrfToken] = useState('');
-
-  useEffect(() => {
-    setCsrfToken(setCSRFToken());
-  }, []);
 
   const handleRatingChange = (field: keyof SurveyData, rating: number) => {
     setSurveyData({ ...surveyData, [field]: rating });
@@ -50,11 +44,6 @@ export function SurveyView({ setCurrentView, accountSettings, setAccountSettings
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateCSRFToken(csrfToken)) {
-      alert('Security validation failed. Please refresh and try again.');
-      return;
-    }
     
     try {
       const emailContent = `Employee Survey Results:
@@ -69,10 +58,10 @@ Ratings (1-5 stars):
 • Recommendation Score: ${surveyData.recommend}/5
 
 Feedback:
-${sanitizeHtml(surveyData.feedback) || 'No feedback provided'}
+${surveyData.feedback || 'No feedback provided'}
 
 Suggested Improvements:
-${sanitizeHtml(surveyData.improvements) || 'No suggestions provided'}
+${surveyData.improvements || 'No suggestions provided'}
 
 Submitted on: ${new Date().toLocaleString()}`;
 
@@ -281,7 +270,7 @@ Submitted on: ${new Date().toLocaleString()}`
               </div>
             </div>
 
-            <input type="hidden" name="csrf_token" value={csrfToken} />
+
             <div className="survey-actions">
               <button type="submit" className="btn-primary survey-submit">
                 <Send size={16} />
