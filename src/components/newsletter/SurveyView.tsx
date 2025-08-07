@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ArrowLeft, Send, Star } from 'lucide-react';
 import type { AccountSettings, ViewType } from '../../types/newsletter';
 import { ThemeToggle } from '../ThemeToggle';
