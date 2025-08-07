@@ -49,7 +49,7 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             <button onClick={() => setCurrentView('profile')} className="btn-secondary">
               <ArrowLeft size={16} />
               <span className="desktop-only">Back to Profile</span>
-              <span className="mobile-only">Back</span>
+              
             </button>
           </div>
         </div>
@@ -57,8 +57,9 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
 
       <div className="profile-container">
         <div className="profile-card card-responsive">
-          {/* Theme Settings */}
-          <div className="settings-section">
+          
+            {/* Theme Settings */}
+            <div className="settings-section">
             <h3 className="settings-section-title text-responsive-lg">
               <Sun size={20} />
               Appearance
@@ -85,9 +86,11 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </h3>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Mail size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label text-responsive-base">Email Notifications</span>
+                  <span className="settings-item-label text-responsive-base">
+                    <Mail size={16} className="mobile-only" />
+                    Email Notifications
+                  </span>
                   <span className="settings-item-description text-responsive-sm">Receive updates via email</span>
                 </div>
               </div>
@@ -102,9 +105,11 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </div>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Smartphone size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label text-responsive-base">Push Notifications</span>
+                  <span className="settings-item-label text-responsive-base">
+                    <Smartphone size={16} className="mobile-only" />
+                    Push Notifications
+                  </span>
                   <span className="settings-item-description text-responsive-sm">Get notified on your device</span>
                 </div>
               </div>
@@ -119,9 +124,11 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </div>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Bell size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label text-responsive-base">Newsletter Updates</span>
+                  <span className="settings-item-label text-responsive-base">
+                    <Bell size={16} className="mobile-only" />
+                    Newsletter Updates
+                  </span>
                   <span className="settings-item-description text-responsive-sm">Weekly newsletter digest</span>
                 </div>
               </div>
@@ -144,9 +151,11 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </h3>
             <div className="settings-item">
               <div className="settings-item-info">
-                <Eye size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label text-responsive-base">Profile Visibility</span>
+                  <span className="settings-item-label text-responsive-base">
+                    <Eye size={16} className="mobile-only" />
+                    Profile Visibility
+                  </span>
                   <span className="settings-item-description text-responsive-sm">Make your profile visible to others</span>
                 </div>
               </div>
@@ -161,9 +170,11 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             </div>
             <div className="settings-item">
               <div className="settings-item-info">
-                <EyeOff size={16} className="mobile-only" />
                 <div>
-                  <span className="settings-item-label text-responsive-base">Show Activity</span>
+                  <span className="settings-item-label text-responsive-base">
+                    <EyeOff size={16} className="mobile-only" />
+                    Show Activity
+                  </span>
                   <span className="settings-item-description text-responsive-sm">Display your activity to others</span>
                 </div>
               </div>
@@ -180,5 +191,6 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
         </div>
       </div>
     </div>
+  
   );
 }

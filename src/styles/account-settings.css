@@ -1,62 +1,73 @@
-/* Account Settings Styles - Responsive */
+/* Account Settings Styles - Fixed Layout */
 
 .profile-container {
-  max-width: 800px;
+  width: 900px;
   margin: 0 auto;
-  padding: clamp(1rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
-  width: 100%;
-}
-
-.account-settings-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: clamp(1rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
-  width: 100%;
-  display: flex;
+  padding: 32px 16px;
+  
   justify-content: center;
 }
 
-.account-settings-container .profile-card {
+.card-responsive {
   width: 100%;
-  max-width: 500px;
+  max-width: 900px;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-content: center;
+  min-height: calc(100vh - 120px);
+  gap: 26px;
+  text-align: center;
+  border-radius: 32px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+  overflow: hidden;
 }
+
+.card-responsive.profile-card {
+  max-width: 600px;
+}
+
+
+
 
 .account-settings-container .settings-section {
   background-color: var(--card-background);
-  border-radius: 2rem;
-  padding: clamp(1rem, 3vw, 1.25rem);
-  margin-bottom: clamp(0.75rem, 2vw, 1rem);
-  box-shadow: 0 1px 3px var(--shadow-color);
-  width: 80%;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-}
-
-.settings-section {
-  background-color: var(--card-background);
-  border-radius: 2rem;
-  padding: clamp(1rem, 3vw, 1.5rem);
-  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  border-radius: 32px;
+  padding: 32px 24px;
+  margin-bottom: 16px;
   box-shadow: 0 1px 3px var(--shadow-color);
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+
+.settings-section {
+  width: 100%;
+  max-width: 900px;
+  margin:auto;
+  
+  background-color: var(--card-background);
+  border-radius: 32px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+
 
 .settings-section-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  gap: 8px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--text-color);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--border-color);
   text-align: center;
 }
@@ -65,27 +76,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: clamp(0.75rem, 2vw, 1rem) 0;
+  padding: 16px 16px ;
   border-bottom: 1px solid var(--border-color);
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 480px) {
-  .settings-item {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
-  }
-  
-  .settings-item-info {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .switch {
-    align-self: flex-end;
-  }
+  gap: 16px;
 }
 
 .settings-item:last-child {
@@ -94,21 +87,29 @@
 
 .settings-item-info {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.settings-item-info > div {
+  display: flex;
+  flex-direction: column;
 }
 
 .settings-item-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 500;
   color: var(--text-color);
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 }
 
 .settings-item-description {
   display: block;
-  font-size: 0.875rem;
+  font-size: 14px;
   color: var(--text-secondary);
+  margin-left: 24px;
 }
 
 /* Toggle Switch */
@@ -165,9 +166,9 @@ input:checked + .slider:before {
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
   background-color: var(--card-background);
   color: var(--text-color);
@@ -189,13 +190,13 @@ input:checked + .slider:before {
 .btn-secondary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
   background-color: var(--card-background);
   color: var(--text-color);
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
@@ -208,28 +209,28 @@ input:checked + .slider:before {
 
 /* Edit Profile Styles */
 .profile-edit-container {
-  max-width: 800px;
+  width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 32px 16px;
 }
 
 .profile-edit-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 }
 
 .profile-edit-title {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 600;
   color: var(--text-color);
 }
 
 .profile-edit-form {
   background-color: var(--card-background);
-  border-radius: 0.75rem;
-  padding: 2rem;
+  border-radius: 12px;
+  padding: 32px;
   box-shadow: 0 1px 3px var(--shadow-color);
 }
 
@@ -237,7 +238,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 }
 
 .avatar-preview {
@@ -248,7 +249,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   position: relative;
   overflow: hidden;
 }
@@ -262,13 +263,13 @@ input:checked + .slider:before {
 .avatar-upload-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
   background-color: var(--card-background);
   color: var(--text-color);
-  font-size: 0.875rem;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -280,35 +281,29 @@ input:checked + .slider:before {
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .form-row {
-    grid-template-columns: 1fr 1fr;
-  }
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 .form-label {
   display: block;
   font-weight: 500;
   color: var(--text-color);
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   border: 1px solid var(--border-color);
-  border-radius: 1.5rem;
-  font-size: 0.875rem;
+  border-radius: 24px;
+  font-size: 14px;
   color: var(--text-color);
   background-color: var(--card-background);
   transition: all 0.2s;
@@ -322,10 +317,10 @@ input:checked + .slider:before {
 
 .form-textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   border: 1px solid var(--border-color);
-  border-radius: 1.5rem;
-  font-size: 0.875rem;
+  border-radius: 24px;
+  font-size: 14px;
   color: var(--text-color);
   background-color: var(--card-background);
   min-height: 120px;
@@ -343,18 +338,18 @@ input:checked + .slider:before {
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 16px;
+  margin-top: 32px;
 }
 
 .btn-primary {
-  padding: 0.75rem 1.5rem;
+  padding: 12px 24px;
   background: linear-gradient(45deg, #8b5cf6, #ff6b00);
   color: white;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -364,20 +359,20 @@ input:checked + .slider:before {
 }
 
 .social-links-section {
-  margin-top: 2rem;
+  margin-top: 32px;
 }
 
 .social-links-title {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-color);
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .social-input-group {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .social-icon {
@@ -387,17 +382,17 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   background-color: var(--secondary-background);
-  border-radius: 0.5rem 0 0 0.5rem;
+  border-radius: 8px 0 0 8px;
   color: var(--text-secondary);
 }
 
 .social-input {
   flex: 1;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   border: 1px solid var(--border-color);
   border-left: none;
-  border-radius: 0 0.5rem 0.5rem 0;
-  font-size: 0.875rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
   background-color: var(--card-background);
   color: var(--text-color);
 }
@@ -408,7 +403,7 @@ input:checked + .slider:before {
 }
 
 .form-hint {
-  font-size: 0.75rem;
+  font-size: 12px;
   color: var(--text-secondary);
-  margin-top: 0.25rem;
+  margin-top: 4px;
 }
