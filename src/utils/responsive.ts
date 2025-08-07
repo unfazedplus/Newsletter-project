@@ -74,10 +74,10 @@ export function createResizeHandler(
   callback: () => void,
   delay: number = 150
 ): () => void {
-  let timeoutId: NodeJS.Timeout;
+  let timeoutId: number;
   
   return () => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(callback, delay);
+    timeoutId = window.setTimeout(callback, delay);
   };
 }
