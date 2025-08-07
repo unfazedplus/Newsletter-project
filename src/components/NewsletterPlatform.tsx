@@ -5,7 +5,7 @@ import '../styles/survey.css';
 import type { Newsletter, StatItem, NewPostData, ViewType, UserProfile, AccountSettings } from '../types/newsletter';
 import { Users, Eye, MessageCircle, TrendingUp } from 'lucide-react';
 import { sanitizeInput, sanitizeHtml } from '../utils/sanitize';
-import { validateInput, sanitizeQuery } from '../utils/validation';
+import { sanitizeQuery } from '../utils/validation';
 
 // Initial data
 const initialNewsletters: Newsletter[] = [
@@ -313,19 +313,7 @@ export default function NewsletterPlatform() {
     { icon: TrendingUp, label: "Engagement", value: "94%", change: "+5%" }
   ];
 
-  const commonProps = useMemo(() => ({
-    newsletters,
-    likedPosts,
-    bookmarkedPosts,
-    toggleLike,
-    toggleBookmark,
-    viewArticle,
-    setCurrentView: handleViewChange,
-    stats,
-    accountSettings,
-    setAccountSettings,
-    handleShare
-  }), [newsletters, likedPosts, bookmarkedPosts, toggleLike, toggleBookmark, viewArticle, accountSettings, setAccountSettings]);
+
 
   return (
     <ViewRouter

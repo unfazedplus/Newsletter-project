@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Star } from 'lucide-react';
 
 interface StarRatingProps {
