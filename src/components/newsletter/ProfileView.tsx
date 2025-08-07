@@ -38,8 +38,7 @@ export function ProfileView({ setCurrentView, userProfile, bookmarkedPosts, news
               className="header-theme-toggle"
             />
             <button onClick={() => setCurrentView('home')} className="btn-secondary">
-              <span className="desktop-only">Back to Home</span>
-              <span className="mobile-only">Back</span>
+              Back to Home
             </button>
           </div>
         </div>
@@ -65,7 +64,7 @@ export function ProfileView({ setCurrentView, userProfile, bookmarkedPosts, news
             </div>
             <button className="btn-edit" onClick={() => setCurrentView('edit-profile')}>
               <Edit2 size={16} />
-              <span className="desktop-only">Edit Profile</span>
+              <span>Edit Profile</span>
             </button>
           </div>
 
