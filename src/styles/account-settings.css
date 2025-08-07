@@ -4,16 +4,8 @@
   width: 900px;
   margin: 0 auto;
   padding: 32px 16px;
+  
   justify-content: center;
-}
-
-.settings-wrapper {
-  width: 400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
 }
 
 .card-responsive {
@@ -54,11 +46,19 @@
 }
 
 
+.settings-wrapper {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
 .settings-section {
   width: 100%;
-  max-width: 400px;
-  margin: auto;
-  padding: 24px;
+  max-width: 900px;
+  margin:auto;
   background-color: var(--card-background);
   border-radius: 32px;
   box-shadow: 0 1px 3px var(--shadow-color);
