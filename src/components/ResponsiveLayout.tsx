@@ -98,10 +98,18 @@ export function useResponsive() {
       }
     };
     
-    checkBreakpoint();
-    window.addEventListener('resize', checkBreakpoint);
+    const debouncedCheckBreakpoint = () => {
+      clearTimeout((window as any).resizeTimeout);
+      (window as any).resizeTimeout = setTimeout(checkBreakpoint, 150);
+    };
     
-    return () => window.removeEventListener('resize', checkBreakpoint);
+    checkBreakpoint();
+    window.addEventListener('resize', debouncedCheckBreakpoint);
+    
+    return () => {
+      window.removeEventListener('resize', debouncedCheckBreakpoint);
+      clearTimeout((window as any).resizeTimeout);
+    };
   }, []);
   
   return {

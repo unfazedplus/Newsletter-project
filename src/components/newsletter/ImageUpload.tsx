@@ -35,36 +35,60 @@ export function ImageUpload({ images, onImagesChange, maxImages = 5 }: ImageUplo
 
   const compressImage = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        reject(new Error('Image processing timeout'));
+      }, 10000);
+      
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       const img = new Image();
       
       img.onload = () => {
-        const maxWidth = 1000;
-        const maxHeight = 1000;
-        let { width, height } = img;
-        
-        if (width > height) {
-          if (width > maxWidth) {
-            height = (height * maxWidth) / width;
-            width = maxWidth;
+        try {
+          clearTimeout(timeout);
+          const maxWidth = 1000;
+          const maxHeight = 1000;
+          let { width, height } = img;
+          
+          if (width > height) {
+            if (width > maxWidth) {
+              height = (height * maxWidth) / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width = (width * maxHeight) / height;
+              height = maxHeight;
+            }
           }
-        } else {
-          if (height > maxHeight) {
-            width = (width * maxHeight) / height;
-            height = maxHeight;
+          
+          canvas.width = width;
+          canvas.height = height;
+          
+          if (!ctx) {
+            reject(new Error('Canvas context not available'));
+            return;
           }
+          
+          ctx.drawImage(img, 0, 0, width, height);
+          resolve(canvas.toDataURL('image/png', 1.0));
+        } catch (error) {
+          clearTimeout(timeout);
+          reject(error);
         }
-        
-        canvas.width = width;
-        canvas.height = height;
-        
-        ctx?.drawImage(img, 0, 0, width, height);
-        resolve(canvas.toDataURL('image/png', 1.0));
       };
       
-      img.onerror = () => reject(new Error('Failed to load image'));
-      img.src = URL.createObjectURL(file);
+      img.onerror = () => {
+        clearTimeout(timeout);
+        reject(new Error('Failed to load image'));
+      };
+      
+      try {
+        img.src = URL.createObjectURL(file);
+      } catch (error) {
+        clearTimeout(timeout);
+        reject(error);
+      }
     });
   };
 

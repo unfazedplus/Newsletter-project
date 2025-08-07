@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Header } from './Header';
 import type { AccountSettings } from '../../types/newsletter';
+import { safeLocalStorage } from '../../utils/errorHandler';
+import { sanitizeHtml } from '../../utils/sanitize';
 
 interface FeedbackData {
   name: string;
@@ -37,15 +39,17 @@ export function FeedbackView({
       return;
     }
     
-    // Save feedback to localStorage
-    const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+    // Save feedback to localStorage with error handling
+    const feedbacks = safeLocalStorage.parseJSON(safeLocalStorage.getItem('feedbacks'), []);
     const newFeedback = {
       ...formData,
+      name: sanitizeHtml(formData.name),
+      comment: sanitizeHtml(formData.comment),
       id: Date.now(),
       timestamp: new Date().toISOString()
     };
     
-    localStorage.setItem('feedbacks', JSON.stringify([newFeedback, ...feedbacks]));
+    safeLocalStorage.setItem('feedbacks', JSON.stringify([newFeedback, ...feedbacks]));
     
     alert('Thank you for your feedback!');
     setCurrentView('home');

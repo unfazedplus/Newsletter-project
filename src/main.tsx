@@ -13,7 +13,9 @@ import NewsletterPlatform from './components/NewsletterPlatform'
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
-  throw new Error('Root element not found');
+  console.error('Failed to find root element. Please ensure your HTML file contains a div with id="root".');
+  document.body.innerHTML = '<div style="padding: 20px; text-align: center; color: red;">Application failed to load. Please refresh the page or contact support.</div>';
+  throw new Error('Root element with id="root" not found in the DOM. Check your HTML file.');
 }
 
 createRoot(rootElement).render(

@@ -1,43 +1,26 @@
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { X, Lightbulb } from 'lucide-react';
+import { TIPS } from '../../constants/tips';
 
-const tips = [
-  "💡 Use keyboard shortcuts Ctrl+K to quickly search through posts!",
-  "🚀 Tag your posts properly to help colleagues find relevant content faster.",
-  "📝 Keep your post titles clear and descriptive for better engagement.",
-  "🎯 Use the bookmark feature to save important posts for later reference.",
-  "⭐ Like posts to show appreciation and boost team morale!",
-  "🔍 Use specific keywords in your search to find exactly what you need.",
-  "📊 Check the stats grid to see trending topics and engagement metrics.",
-  "🎨 Upload images to make your posts more visually appealing.",
-  "💬 Engage with comments to build stronger team connections.",
-  "📅 Use the calendar to plan your content posting schedule.",
-  "🏷️ Follow trending hashtags to stay updated on company initiatives.",
-  "✨ Regular posting keeps the community active and informed!",
-  "🎪 Share success stories to inspire and motivate your teammates.",
-  "🔔 Adjust your notification settings to stay informed without overwhelm.",
-  "🌟 Quality content gets more engagement than frequent low-value posts."
-];
-
-export function TipCharacter() {
+export const TipCharacter = memo(function TipCharacter() {
   const [showTip, setShowTip] = useState(false);
   const [currentTip, setCurrentTip] = useState('');
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const generateTip = () => {
+  const generateTip = useCallback(() => {
     if (isAnimating) return;
     
     setIsAnimating(true);
-    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    const randomTip = TIPS[Math.floor(Math.random() * TIPS.length)];
     setCurrentTip(randomTip);
     setShowTip(true);
     
     setTimeout(() => setIsAnimating(false), 300);
-  };
+  }, [isAnimating]);
 
-  const closeTip = () => {
+  const closeTip = useCallback(() => {
     setShowTip(false);
-  };
+  }, []);
 
   return (
     <>
@@ -72,4 +55,4 @@ export function TipCharacter() {
       )}
     </>
   );
-}
+});

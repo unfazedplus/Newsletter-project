@@ -79,9 +79,12 @@ const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
         onLoginSuccess();
       }
       
-      // Direct navigation to dashboard
-      localStorage.setItem('isAuthenticated', 'true');
-      navigate('/dashboard');
+      // Secure authentication would be implemented here
+      // For demo purposes only - use proper authentication in production
+      if (formData.username && formData.password) {
+        localStorage.setItem('isAuthenticated', 'true');
+        navigate('/dashboard');
+      }
     }
   };
 

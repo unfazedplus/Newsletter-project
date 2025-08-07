@@ -1,20 +1,11 @@
-import { useState, useEffect } from 'react';
-import { LandingView } from './newsletter/LandingView';
-import { LoginView } from './newsletter/LoginView';
-import { SignupView } from './newsletter/SignupView';
-import { CreatePostView } from './newsletter/CreatePostView';
-import { ArticleView } from './newsletter/ArticleView';
-import { HomeView } from './newsletter/HomeView';
-import { ProfileView } from './newsletter/ProfileView';
-import { EditProfileView } from './newsletter/EditProfileView';
-import { AccountSettingsView } from './newsletter/AccountSettingsView';
-import { FeedbackView } from './newsletter/FeedbackView';
-import { TaskManagerView } from './newsletter/TaskManagerView';
-import { SurveyView } from './newsletter/SurveyView';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { ViewRouter } from './ViewRouter';
 import '../styles/survey.css';
 
 import type { Newsletter, StatItem, NewPostData, ViewType, UserProfile, AccountSettings } from '../types/newsletter';
 import { Users, Eye, MessageCircle, TrendingUp } from 'lucide-react';
+import { sanitizeInput, sanitizeHtml } from '../utils/sanitize';
+import { validateInput, sanitizeQuery } from '../utils/validation';
 
 // Initial data
 const initialNewsletters: Newsletter[] = [
@@ -80,13 +71,23 @@ export default function NewsletterPlatform() {
   
 
   
-  const [likedPosts, setLikedPosts] = useState<Set<number>>(
-    new Set(JSON.parse(localStorage.getItem('likedPosts') || '[]'))
-  );
+  const [likedPosts, setLikedPosts] = useState<Set<number>>(() => {
+    try {
+      const stored = localStorage.getItem('likedPosts');
+      return new Set(stored ? JSON.parse(sanitizeQuery(stored)) : []);
+    } catch {
+      return new Set();
+    }
+  });
   
-  const [bookmarkedPosts, setBookmarkedPosts] = useState<Set<number>>(
-    new Set(JSON.parse(localStorage.getItem('bookmarkedPosts') || '[]'))
-  );
+  const [bookmarkedPosts, setBookmarkedPosts] = useState<Set<number>>(() => {
+    try {
+      const stored = localStorage.getItem('bookmarkedPosts');
+      return new Set(stored ? JSON.parse(sanitizeQuery(stored)) : []);
+    } catch {
+      return new Set();
+    }
+  });
   
   const [loginData, setLoginData] = useState<{ email: string; password: string }>(
     JSON.parse(localStorage.getItem('loginData') || '{"email":"","password":""}')
@@ -163,62 +164,71 @@ export default function NewsletterPlatform() {
     localStorage.setItem('searchQuery', searchQuery);
   }, [currentView, likedPosts, bookmarkedPosts, loginData, signupData, selectedArticleId, newsletters, userProfile, accountSettings, searchQuery]);
 
-  const toggleLike = (postId: number) => {
-    const newLiked = new Set(likedPosts);
-    if (newLiked.has(postId)) {
-      newLiked.delete(postId);
-    } else {
-      newLiked.add(postId);
-    }
-    setLikedPosts(newLiked);
-  };
+  const toggleLike = useCallback((postId: number) => {
+    setLikedPosts(prev => {
+      const newLiked = new Set(prev);
+      if (newLiked.has(postId)) {
+        newLiked.delete(postId);
+      } else {
+        newLiked.add(postId);
+      }
+      return newLiked;
+    });
+  }, []);
 
-  const toggleBookmark = (postId: number) => {
-    const newBookmarked = new Set(bookmarkedPosts);
-    if (newBookmarked.has(postId)) {
-      newBookmarked.delete(postId);
-    } else {
-      newBookmarked.add(postId);
-    }
-    setBookmarkedPosts(newBookmarked);
-  };
+  const toggleBookmark = useCallback((postId: number) => {
+    setBookmarkedPosts(prev => {
+      const newBookmarked = new Set(prev);
+      if (newBookmarked.has(postId)) {
+        newBookmarked.delete(postId);
+      } else {
+        newBookmarked.add(postId);
+      }
+      return newBookmarked;
+    });
+  }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     setCurrentView('home');
-  };
+  }, []);
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (signupData.password !== signupData.confirmPassword) {
       alert('Passwords do not match!');
       return;
     }
     setCurrentView('home');
-  };
+  }, [signupData.password, signupData.confirmPassword]);
 
-  const handleCreatePost = (e: React.FormEvent) => {
+  const handleCreatePost = useCallback((e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!newPost.title.trim() || !newPost.excerpt.trim()) {
+      alert('Title and excerpt are required.');
+      return;
+    }
     
     try {
       const newNewsletter: Newsletter = {
-        id: newsletters.length + 1,
-        title: newPost.title,
+        id: Date.now(),
+        title: sanitizeHtml(newPost.title.trim()),
         author: "You",
         role: "Staff Member",
         date: "Just now",
         category: newPost.category,
-        excerpt: newPost.excerpt,
+        excerpt: sanitizeHtml(newPost.excerpt.trim()),
         likes: 0,
         comments: 0,
         views: 0,
-        tags: newPost.tags.split(',').map(tag => tag.trim()),
+        tags: newPost.tags.split(',').map(tag => sanitizeInput(tag.trim())).filter(Boolean),
         image: newPost.images.length > 0 ? newPost.images[0] : "/api/placeholder/400/200",
         images: newPost.images,
         commentsList: []
       };
       
-      setNewsletters([newNewsletter, ...newsletters]);
+      setNewsletters(prev => [newNewsletter, ...prev]);
       setNewPost({
         title: '',
         category: 'Product Updates',
@@ -229,20 +239,20 @@ export default function NewsletterPlatform() {
       setCurrentView('home');
     } catch (error) {
       console.error('Error creating post:', error);
-      alert('Failed to create post. Images may be too large.');
+      alert('Failed to create post. Please try again.');
     }
-  };
+  }, [newPost]);
 
-  const handleAddComment = (postId: number) => {
+  const handleAddComment = useCallback((postId: number) => {
     if (!newComment.trim()) return;
 
-    const updatedNewsletters = newsletters.map(newsletter => {
+    setNewsletters(prev => prev.map(newsletter => {
       if (newsletter.id === postId) {
         const comments = newsletter.commentsList || [];
         const newCommentObj = {
           id: comments.length + 1,
           author: "You",
-          text: newComment,
+          text: sanitizeHtml(newComment),
           date: "Just now"
         };
         
@@ -253,47 +263,48 @@ export default function NewsletterPlatform() {
         };
       }
       return newsletter;
-    });
+    }));
     
-    setNewsletters(updatedNewsletters);
     setNewComment('');
-  };
+  }, [newComment]);
 
-  const handleDeleteComment = (postId: number, commentId: number) => {
-    const updatedNewsletters = newsletters.map(newsletter => {
+  const handleDeleteComment = useCallback((postId: number, commentId: number) => {
+    if (typeof postId !== 'number' || typeof commentId !== 'number') return;
+    
+    setNewsletters(prev => prev.map(newsletter => {
       if (newsletter.id === postId && newsletter.commentsList) {
         const filteredComments = newsletter.commentsList.filter(comment => comment.id !== commentId);
         return {
           ...newsletter,
-          comments: newsletter.comments - 1,
+          comments: Math.max(0, newsletter.comments - 1),
           commentsList: filteredComments
         };
       }
       return newsletter;
-    });
-    
-    setNewsletters(updatedNewsletters);
-  };
+    }));
+  }, []);
 
-  const viewArticle = (articleId: number) => {
-    setSelectedArticleId(articleId);
-    setCurrentView('article');
-  };
+  const viewArticle = useCallback((articleId: number) => {
+    if (typeof articleId === 'number' && articleId > 0) {
+      setSelectedArticleId(articleId);
+      setCurrentView('article');
+    }
+  }, []);
 
-  const handleShare = (newsletter: Newsletter) => {
+  const handleShare = useCallback((newsletter: Newsletter) => {
     const shareData = {
-      title: newsletter.title,
-      text: newsletter.excerpt,
+      title: sanitizeHtml(newsletter.title),
+      text: sanitizeHtml(newsletter.excerpt),
       url: window.location.href
     };
 
     if (navigator.share) {
       navigator.share(shareData);
     } else {
-      navigator.clipboard.writeText(`${newsletter.title}\n${newsletter.excerpt}\n${window.location.href}`);
+      navigator.clipboard.writeText(`${sanitizeHtml(newsletter.title)}\n${sanitizeHtml(newsletter.excerpt)}\n${window.location.href}`);
       alert('Link copied to clipboard!');
     }
-  };
+  }, []);
 
   const stats: StatItem[] = [
     { icon: Users, label: "Active Staff", value: "247", change: "+12%" },
@@ -302,7 +313,7 @@ export default function NewsletterPlatform() {
     { icon: TrendingUp, label: "Engagement", value: "94%", change: "+5%" }
   ];
 
-  const commonProps = {
+  const commonProps = useMemo(() => ({
     newsletters,
     likedPosts,
     bookmarkedPosts,
@@ -314,143 +325,40 @@ export default function NewsletterPlatform() {
     accountSettings,
     setAccountSettings,
     handleShare
-  };
-
-  if (currentView === 'landing') {
-    return (
-      <LandingView
-        setCurrentView={handleViewChange}
-      />
-    );
-  }
-
-  if (currentView === 'login') {
-    return (
-      <LoginView
-        loginData={loginData}
-        setLoginData={setLoginData}
-        handleLogin={handleLogin}
-        setCurrentView={handleViewChange}
-      />
-    );
-  }
-
-  if (currentView === 'signup') {
-    return (
-      <SignupView
-        signupData={signupData}
-        setSignupData={setSignupData}
-        handleSignup={handleSignup}
-        setCurrentView={handleViewChange}
-      />
-    );
-  }
-
-  if (currentView === 'create') {
-    return (
-      <CreatePostView
-        newPost={newPost}
-        setNewPost={setNewPost}
-        handleCreatePost={handleCreatePost}
-        setCurrentView={handleViewChange}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
-
-  if (currentView === 'profile') {
-    // Ensure we have the latest user profile data
-    return (
-      <ProfileView
-        setCurrentView={handleViewChange}
-        userProfile={userProfile}
-        bookmarkedPosts={bookmarkedPosts}
-        newsletters={newsletters}
-        viewArticle={viewArticle}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
-
-  if (currentView === 'edit-profile') {
-    return (
-      <EditProfileView
-        setCurrentView={handleViewChange}
-        userProfile={userProfile}
-        setUserProfile={setUserProfile}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
-
-  if (currentView === 'settings') {
-    return (
-      <AccountSettingsView
-        setCurrentView={handleViewChange}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
-  
-  if (currentView === 'feedback') {
-    return (
-      <FeedbackView
-        setCurrentView={handleViewChange}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
-
-  if (currentView === 'article') {
-    const article = newsletters.find(n => n.id === selectedArticleId) || newsletters[0];
-    return (
-      <ArticleView
-        article={article}
-        likedPosts={likedPosts}
-        bookmarkedPosts={bookmarkedPosts}
-        toggleLike={toggleLike}
-        toggleBookmark={toggleBookmark}
-        newComment={newComment}
-        setNewComment={setNewComment}
-        handleAddComment={handleAddComment}
-        handleDeleteComment={handleDeleteComment}
-        setCurrentView={handleViewChange}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
-  
-  if (currentView === 'task-manager') {
-    return (
-      <TaskManagerView
-        setCurrentView={handleViewChange}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
-
-  if (currentView === 'survey') {
-    return (
-      <SurveyView
-        setCurrentView={handleViewChange}
-        accountSettings={accountSettings}
-        setAccountSettings={setAccountSettings}
-      />
-    );
-  }
+  }), [newsletters, likedPosts, bookmarkedPosts, toggleLike, toggleBookmark, viewArticle, accountSettings, setAccountSettings]);
 
   return (
-    <HomeView
-      {...commonProps}
+    <ViewRouter
+      currentView={currentView}
+      newsletters={newsletters}
+      selectedArticleId={selectedArticleId}
+      userProfile={userProfile}
+      accountSettings={accountSettings}
+      newPost={newPost}
+      loginData={loginData}
+      signupData={signupData}
+      newComment={newComment}
       searchQuery={searchQuery}
+      likedPosts={likedPosts}
+      bookmarkedPosts={bookmarkedPosts}
+      stats={stats}
+      onViewChange={handleViewChange}
+      onLogin={handleLogin}
+      onSignup={handleSignup}
+      onCreatePost={handleCreatePost}
+      onAddComment={handleAddComment}
+      onDeleteComment={handleDeleteComment}
+      onToggleLike={toggleLike}
+      onToggleBookmark={toggleBookmark}
+      onViewArticle={viewArticle}
+      onShare={handleShare}
+      setLoginData={setLoginData}
+      setSignupData={setSignupData}
+      setNewPost={setNewPost}
+      setNewComment={setNewComment}
       setSearchQuery={setSearchQuery}
+      setUserProfile={setUserProfile}
+      setAccountSettings={setAccountSettings}
     />
   );
 }

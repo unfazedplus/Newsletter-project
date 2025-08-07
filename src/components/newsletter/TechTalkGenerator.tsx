@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { X, RefreshCw, Calendar, Users, Clock } from 'lucide-react';
+import { TECH_CATEGORIES, DURATIONS, AUDIENCES, TECH_SEEDS } from '../../constants/techTalk';
+import { sanitizeHtml } from '../../utils/sanitize';
 
 interface TechTalk {
   title: string;
@@ -10,14 +12,13 @@ interface TechTalk {
   image: string;
 }
 
-const durations = ["30 minutes", "45 minutes", "1 hour", "1.5 hours"];
-const audiences = ["Beginners", "Intermediate", "Advanced", "All Levels"];
+
 
 export function TechTalkGenerator({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const [techTalk, setTechTalk] = useState<TechTalk | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const generateTechTalk = async () => {
+  const generateTechTalk = useCallback(async () => {
     setIsLoading(true);
     
     try {
@@ -26,19 +27,17 @@ export function TechTalkGenerator({ isOpen, onClose }: { isOpen: boolean; onClos
       const contentData = await contentResponse.json();
       
       // Fetch tech image from Picsum with tech-related seed
-      const techSeeds = ['tech', 'code', 'computer', 'programming', 'software', 'data', 'ai', 'web'];
-      const randomSeed = techSeeds[Math.floor(Math.random() * techSeeds.length)];
+      const randomSeed = TECH_SEEDS[Math.floor(Math.random() * TECH_SEEDS.length)];
       const imageUrl = `https://picsum.photos/seed/${randomSeed}${Date.now()}/400/250`;
       
       // Transform the content into tech talk format
-      const techCategories = ['AI/ML', 'Web Development', 'Cloud Computing', 'Data Science', 'Mobile Development', 'Blockchain'];
-      const randomCategory = techCategories[Math.floor(Math.random() * techCategories.length)];
-      const randomDuration = durations[Math.floor(Math.random() * durations.length)];
-      const randomAudience = audiences[Math.floor(Math.random() * audiences.length)];
+      const randomCategory = TECH_CATEGORIES[Math.floor(Math.random() * TECH_CATEGORIES.length)];
+      const randomDuration = DURATIONS[Math.floor(Math.random() * DURATIONS.length)];
+      const randomAudience = AUDIENCES[Math.floor(Math.random() * AUDIENCES.length)];
       
       // Create tech-focused title and description
-      const techTitle = `${randomCategory}: ${contentData.title.split(' ').slice(0, 4).join(' ').replace(/^\w/, (c: string) => c.toUpperCase())}`;
-      const techDescription = `${contentData.body.substring(0, 120)}... This session will cover practical implementations and real-world applications.`;
+      const techTitle = sanitizeHtml(`${randomCategory}: ${contentData.title.split(' ').slice(0, 4).join(' ').replace(/^\w/, (c: string) => c.toUpperCase())}`);
+      const techDescription = sanitizeHtml(`${contentData.body.substring(0, 120)}... This session will cover practical implementations and real-world applications.`);
 
       const newTechTalk: TechTalk = {
         title: techTitle,
@@ -52,22 +51,21 @@ export function TechTalkGenerator({ isOpen, onClose }: { isOpen: boolean; onClos
       setTechTalk(newTechTalk);
     } catch {
       // Fallback with Lorem Picsum image
-      const fallbackCategories = ['AI/ML', 'Web Development', 'Cloud Computing'];
-      const fallbackCategory = fallbackCategories[Math.floor(Math.random() * fallbackCategories.length)];
+      const fallbackCategory = TECH_CATEGORIES[Math.floor(Math.random() * TECH_CATEGORIES.length)];
       
       const newTechTalk: TechTalk = {
-        title: `${fallbackCategory}: Modern Development Practices`,
-        description: 'Explore cutting-edge technologies and methodologies in this comprehensive tech talk session.',
+        title: sanitizeHtml(`${fallbackCategory}: Modern Development Practices`),
+        description: sanitizeHtml('Explore cutting-edge technologies and methodologies in this comprehensive tech talk session.'),
         category: fallbackCategory,
-        duration: durations[Math.floor(Math.random() * durations.length)],
-        audience: audiences[Math.floor(Math.random() * audiences.length)],
+        duration: DURATIONS[Math.floor(Math.random() * DURATIONS.length)],
+        audience: AUDIENCES[Math.floor(Math.random() * AUDIENCES.length)],
         image: `https://picsum.photos/seed/tech${Date.now()}/400/250`
       };
       setTechTalk(newTechTalk);
     }
     
     setIsLoading(false);
-  };
+  }, []);
 
   if (!isOpen) return null;
 

@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import {
   User,
   Heart,
@@ -18,7 +19,7 @@ interface NewsletterCardProps {
   onShare: () => void;
 }
 
-export function NewsletterCard({
+const NewsletterCard = memo(function NewsletterCard({
   newsletter,
   isLiked,
   isBookmarked,
@@ -58,6 +59,10 @@ export function NewsletterCard({
                     alt="Post image" 
                     className="single-image"
                     onClick={onViewArticle}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                 ) : (
                   <div className="image-grid">
@@ -68,6 +73,10 @@ export function NewsletterCard({
                         alt={`Post image ${index + 1}`} 
                         className="grid-image"
                         onClick={onViewArticle}
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
                       />
                     ))}
                     {newsletter.images.length > 4 && (
@@ -125,4 +134,6 @@ export function NewsletterCard({
       </div>
     </article>
   );
-}
+});
+
+export { NewsletterCard };
