@@ -35,7 +35,7 @@ export function Header({ setCurrentView, accountSettings, setAccountSettings, se
           </div>
           <button className="btn-create" onClick={() => setCurrentView('create')}>
             <Plus />
-            <span>Create</span>
+            <span className="desktop-only">Create</span>
           </button>
           <Bell className="icon-button" />
           {accountSettings && setAccountSettings && (

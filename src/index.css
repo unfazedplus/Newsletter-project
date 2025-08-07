@@ -4,6 +4,7 @@
 @import './styles/layout-responsive.css';
 @import './styles/responsive-utilities.css';
 @import './styles/mobile-optimizations.css';
+@import './styles/mobile-fixes.css';
 
 /* CSS Reset and Base Styles */
 * {

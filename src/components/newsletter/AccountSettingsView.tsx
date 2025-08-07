@@ -49,7 +49,7 @@ export function AccountSettingsView({ setCurrentView, accountSettings, setAccoun
             <button onClick={() => setCurrentView('profile')} className="btn-secondary">
               <ArrowLeft size={16} />
               <span className="desktop-only">Back to Profile</span>
-              
+              <span className="mobile-only">Back</span>
             </button>
           </div>
         </div>

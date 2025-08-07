@@ -1,0 +1,483 @@
+/* Mobile-specific fixes for header, profile, and account settings */
+
+/* Header Mobile Fixes */
+@media (max-width: 639px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .header-brand {
+    width: 100%;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .header-divider {
+    display: none;
+  }
+
+  .header-title {
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    order: 2;
+  }
+
+  .search-container {
+    width: 100%;
+    order: 1;
+    margin: 0.5rem 0;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Fix profile icon positioning */
+  .avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    flex-shrink: 0;
+  }
+
+  .icon-button {
+    width: 2.25rem;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    flex-shrink: 0;
+  }
+
+  .btn-create {
+    padding: 0.5rem 0.75rem;
+    min-width: auto;
+    white-space: nowrap;
+  }
+
+  .btn-create span {
+    display: none;
+  }
+
+  .btn-secondary {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .btn-secondary span:not(.desktop-only) {
+    display: none;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Profile View Mobile Fixes */
+@media (max-width: 639px) {
+  .profile-container {
+    max-width: 100%;
+    padding: 1rem 0.75rem;
+    margin: 0;
+  }
+
+  .profile-card {
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .profile-picture-container {
+    align-self: center;
+  }
+
+  .profile-avatar-large {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+  }
+
+  .profile-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .profile-name {
+    font-size: 1.25rem;
+  }
+
+  .btn-edit {
+    align-self: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .btn-edit span {
+    display: none;
+  }
+
+  .profile-details {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .profile-detail-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .profile-detail-icon {
+    margin-bottom: 0.25rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat-item {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .bookmarks-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bookmark-card {
+    padding: 1rem;
+  }
+
+  .bookmark-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .bookmark-stats {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .action-buttons {
+    gap: 0.5rem;
+  }
+
+  .profile-action-btn {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 1rem;
+  }
+
+  .profile-action-btn span {
+    font-size: 0.75rem;
+  }
+
+  /* Image modal mobile fixes */
+  .image-modal-content {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .image-modal-picture {
+    width: min(300px, 85vw);
+    height: min(300px, 85vw);
+  }
+}
+
+/* Account Settings Mobile Fixes */
+@media (max-width: 639px) {
+  .profile-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem 0.75rem;
+  }
+
+  .card-responsive {
+    max-width: 100%;
+    margin: 0;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    min-height: auto;
+    gap: 1.5rem;
+  }
+
+  .card-responsive.profile-card {
+    max-width: 100%;
+  }
+
+  .settings-section {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .settings-section-title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .settings-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .settings-item-info {
+    width: 100%;
+  }
+
+  .settings-item-info > div {
+    width: 100%;
+  }
+
+  .settings-item-label {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .settings-item-description {
+    font-size: 0.75rem;
+    margin-left: 0;
+    margin-top: 0.25rem;
+  }
+
+  .switch {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  /* Mobile-specific text sizing */
+  .text-responsive-lg {
+    font-size: 1rem !important;
+  }
+
+  .text-responsive-base {
+    font-size: 0.875rem !important;
+  }
+
+  .text-responsive-sm {
+    font-size: 0.75rem !important;
+  }
+
+  .responsive-text {
+    font-size: 0.875rem !important;
+  }
+
+  /* Mobile icons for settings */
+  .mobile-only {
+    display: inline-block !important;
+    margin-right: 0.5rem;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Header adjustments for settings page */
+  .header-brand .header-title {
+    font-size: 0.75rem;
+  }
+
+  .btn-secondary {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .btn-secondary span {
+    display: none;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .profile-container {
+    padding: 1.5rem;
+  }
+
+  .profile-card {
+    padding: 1.75rem;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bookmarks-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .settings-section {
+    padding: 1.5rem;
+  }
+
+  .card-responsive {
+    padding: 1.75rem;
+    gap: 2rem;
+  }
+}
+
+/* Ensure desktop view remains unchanged */
+@media (min-width: 1024px) {
+  .desktop-only {
+    display: inline-block !important;
+  }
+
+  .mobile-only {
+    display: none !important;
+  }
+
+  .responsive-text {
+    font-size: inherit !important;
+  }
+
+  .text-responsive-lg {
+    font-size: 1.125rem !important;
+  }
+
+  .text-responsive-base {
+    font-size: 1rem !important;
+  }
+
+  .text-responsive-sm {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Additional utility classes */
+.mobile-center {
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .mobile-center {
+    text-align: left;
+  }
+}
+
+.mobile-full-width {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .mobile-full-width {
+    width: auto;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .profile-container {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .profile-card,
+  .settings-section {
+    padding: 1rem;
+  }
+
+  .header-container {
+    padding: 0.5rem;
+  }
+
+  .btn-create,
+  .btn-secondary,
+  .avatar,
+  .icon-button {
+    min-width: 2rem;
+    min-height: 2rem;
+    padding: 0.25rem;
+  }
+}
+
+/* Additional mobile layout fixes */
+@media (max-width: 639px) {
+  /* Ensure header elements don't overflow */
+  .header {
+    overflow-x: hidden;
+  }
+
+  .header-container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Profile view specific fixes */
+  .profile-section-title {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .profile-detail-item {
+    padding: 0.75rem;
+    background: #f9fafb;
+    border-radius: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-detail-value {
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  /* Bookmark cards mobile optimization */
+  .bookmark-title {
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+
+  .bookmark-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  /* Action buttons mobile optimization */
+  .profile-action-btn {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Settings page mobile improvements */
+  .settings-item-label {
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .settings-item-description {
+    color: #6b7280;
+    line-height: 1.4;
+  }
+}
