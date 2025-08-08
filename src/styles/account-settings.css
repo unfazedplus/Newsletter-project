@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   min-height: calc(100vh - 120px);
   gap: 26px;
   text-align: center;
@@ -62,7 +62,7 @@
 .settings-section {
   width: 100%;
   max-width: 900px;
-  margin:auto;
+  margin: auto;
   background-color: var(--card-background);
   border-radius: 32px;
   box-shadow: 0 1px 3px var(--shadow-color);
@@ -82,15 +82,17 @@
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-color);
   text-align: center;
+  width: 100%;
 }
 
 .settings-item {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 16px 16px ;
+  padding: 16px;
   border-bottom: 1px solid var(--border-color);
   gap: 16px;
+  width: 100%;
 }
 
 .settings-item:last-child {
@@ -101,6 +103,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  flex: 1;
 }
 
 .settings-item-info > div {
@@ -232,6 +235,7 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .profile-edit-title {
@@ -245,6 +249,7 @@ input:checked + .slider:before {
   border-radius: 12px;
   padding: 32px;
   box-shadow: 0 1px 3px var(--shadow-color);
+  width: 100%;
 }
 
 .profile-avatar-upload {
@@ -252,6 +257,7 @@ input:checked + .slider:before {
   flex-direction: column;
   align-items: center;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .avatar-preview {
@@ -299,6 +305,7 @@ input:checked + .slider:before {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .form-group {
@@ -355,6 +362,7 @@ input:checked + .slider:before {
   justify-content: flex-end;
   gap: 16px;
   margin-top: 32px;
+  width: 100%;
 }
 
 .btn-primary {
@@ -375,6 +383,7 @@ input:checked + .slider:before {
 
 .social-links-section {
   margin-top: 32px;
+  width: 100%;
 }
 
 .social-links-title {
@@ -388,10 +397,11 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .social-icon {
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -495,6 +505,20 @@ input:checked + .slider:before {
 
   .profile-edit-title {
     font-size: 20px;
+  }
+
+  .social-input-group {
+    flex-direction: column;
+  }
+
+  .social-icon {
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+  }
+
+  .social-input {
+    border-radius: 0 0 8px 8px;
+    border-left: 1px solid var(--border-color);
   }
 }
 
