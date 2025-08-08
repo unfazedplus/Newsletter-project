@@ -52,3 +52,11 @@ export default tseslint.config({
   },
 })
 ```
+
+## Troubleshooting and Fixes
+
+- **Run Lint and Build**: If you encounter timeout errors, ensure your environment has shell integration enabled. Run `npm install`, then `npm run lint` to check for code issues, and `npm run build` to verify compilation.
+- **Responsiveness**: Viewport meta tag is already in index.html. CSS files have been updated with flexible widths and media queries.
+- **Dependencies**: Updated to latest versions; run `npm install` to apply.
+- **Environment**: Copy `.env.example` to `.env` and configure as needed.
+- **Testing**: Consider adding a test script, e.g., "test": "vitest", and install vitest for unit tests.

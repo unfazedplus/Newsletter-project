@@ -1,10 +1,12 @@
 /* Account Settings Styles - Fixed Layout */
 
 .profile-container {
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
   padding: 32px 16px;
   
+  display: flex;
   justify-content: center;
 }
 
@@ -25,6 +27,7 @@
 }
 
 .card-responsive.profile-card {
+  width: 100%;
   max-width: 600px;
 }
 
@@ -47,7 +50,8 @@
 
 
 .settings-wrapper {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -217,7 +221,8 @@ input:checked + .slider:before {
 
 /* Edit Profile Styles */
 .profile-edit-container {
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   padding: 32px 16px;
 }
@@ -250,8 +255,10 @@ input:checked + .slider:before {
 }
 
 .avatar-preview {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: var(--secondary-background);
   display: flex;
@@ -414,4 +421,117 @@ input:checked + .slider:before {
   font-size: 12px;
   color: var(--text-secondary);
   margin-top: 4px;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+  .profile-container {
+    max-width: 800px;
+    padding: 24px 12px;
+  }
+
+  .profile-edit-container {
+    max-width: 700px;
+    padding: 24px 12px;
+  }
+
+  .card-responsive {
+    max-width: 800px;
+  }
+
+  .settings-section {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 16px 8px;
+  }
+
+  .profile-edit-container {
+    padding: 16px 8px;
+  }
+
+  .card-responsive {
+    max-width: 100%;
+    border-radius: 16px;
+    gap: 16px;
+  }
+
+  .settings-section {
+    max-width: 100%;
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .settings-wrapper {
+    max-width: none;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .profile-edit-form {
+    padding: 24px 16px;
+  }
+
+  .avatar-preview {
+    max-width: 100px;
+  }
+
+  .settings-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 8px;
+  }
+
+  .settings-section-title {
+    font-size: 16px;
+  }
+
+  .profile-edit-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 8px;
+  }
+
+  .profile-edit-container {
+    padding: 8px;
+  }
+
+  .card-responsive {
+    border-radius: 8px;
+  }
+
+  .settings-section {
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .profile-edit-form {
+    padding: 16px;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  .btn-primary {
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+
+  .settings-item {
+    padding: 8px 4px;
+  }
 }

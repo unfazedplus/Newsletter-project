@@ -1,4 +1,6 @@
 import React from 'react';
+import { getResponsiveClasses } from '../utils/responsive';
+
 
 interface ResponsiveLayoutProps {
   children: React.ReactNode;
@@ -78,99 +80,7 @@ export function ResponsivePage({ children, sidebar, className = '' }: Responsive
   );
 }
 
-export function useResponsive() {
-  const [breakpoint, setBreakpoint] = React.useState<'mobile' | 'tablet' | 'desktop'>('desktop');
-  const [screenSize, setScreenSize] = React.useState({ width: 0, height: 0 });
-  
-  React.useEffect(() => {
-    const checkBreakpoint = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      
-      setScreenSize({ width, height });
-      
-      if (width <= 639) {
-        setBreakpoint('mobile');
-      } else if (width <= 1023) {
-        setBreakpoint('tablet');
-      } else {
-        setBreakpoint('desktop');
-      }
-    };
-    
-    const debouncedCheckBreakpoint = () => {
-      clearTimeout((window as any).resizeTimeout);
-      (window as any).resizeTimeout = setTimeout(checkBreakpoint, 150);
-    };
-    
-    checkBreakpoint();
-    window.addEventListener('resize', debouncedCheckBreakpoint);
-    
-    return () => {
-      window.removeEventListener('resize', debouncedCheckBreakpoint);
-      clearTimeout((window as any).resizeTimeout);
-    };
-  }, []);
-  
-  return {
-    breakpoint,
-    screenSize,
-    isMobile: breakpoint === 'mobile',
-    isTablet: breakpoint === 'tablet',
-    isDesktop: breakpoint === 'desktop',
-    isSmallScreen: screenSize.width <= 639,
-    isMediumScreen: screenSize.width > 639 && screenSize.width <= 1023,
-    isLargeScreen: screenSize.width > 1023
-  };
-}
 
-// Responsive utility functions
-export function getResponsiveClasses(baseClass: string, responsive: {
-  mobile?: string;
-  tablet?: string;
-  desktop?: string;
-}) {
-  let classes = baseClass;
-  
-  if (responsive.mobile) {
-    classes += ` ${responsive.mobile}`;
-  }
-  if (responsive.tablet) {
-    classes += ` md:${responsive.tablet}`;
-  }
-  if (responsive.desktop) {
-    classes += ` lg:${responsive.desktop}`;
-  }
-  
-  return classes;
-}
-
-export function getResponsiveValue<T>(value: T | {
-  mobile?: T;
-  tablet?: T;
-  desktop?: T;
-}, breakpoint: 'mobile' | 'tablet' | 'desktop'): T {
-  if (typeof value === 'object' && value !== null && 'mobile' in value) {
-    const responsiveValue = value as {
-      mobile?: T;
-      tablet?: T;
-      desktop?: T;
-    };
-    
-    switch (breakpoint) {
-      case 'mobile':
-        return responsiveValue.mobile ?? responsiveValue.tablet ?? responsiveValue.desktop as T;
-      case 'tablet':
-        return responsiveValue.tablet ?? responsiveValue.desktop ?? responsiveValue.mobile as T;
-      case 'desktop':
-        return responsiveValue.desktop ?? responsiveValue.tablet ?? responsiveValue.mobile as T;
-      default:
-        return responsiveValue.desktop as T;
-    }
-  }
-  
-  return value as T;
-}
 
 // Responsive image component
 interface ResponsiveImageProps {
